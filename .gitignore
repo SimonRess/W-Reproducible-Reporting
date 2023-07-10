@@ -3,4 +3,5 @@
 .RData
 .Ruserdata
 
-/.venv/
+.venv/
+Showcase_rgpt_files/
