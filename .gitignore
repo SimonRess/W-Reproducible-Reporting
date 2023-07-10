@@ -4,4 +4,7 @@
 .Ruserdata
 
 .venv/
+python_quarto_introduction_files/
+python_quarto_introduction.html
 Showcase_rgpt_files/
+Showcase_rgpt.html
