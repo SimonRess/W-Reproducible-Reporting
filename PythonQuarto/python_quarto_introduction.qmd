@@ -1,0 +1,455 @@
+---
+title: "Einführung in Quarto"
+author: "Simon Ress"
+format: 
+  # pdf
+  # html
+  revealjs:
+    slide-number: true
+    footer: <https://www.mt-itsolutions.com/>
+    logo: files/MT_GMBH_Logo.jpg
+    toc: true
+    toc-title: "Inhalt"
+    toc-depth: 1
+    code-fold: true # Code chunks are folded by default
+editor: visual
+#Citation:
+bibliography: files/references.bib #Bibliography File(s)
+#csl: nature.csl #Citation Style
+---
+
+# YAML: Project Metadata
+
+## Format des Outputs
+::: {style="font-size:32px"}
+Es verschiedene Ausgabetypen und -formate zur Verfügung ([quarto - All Formats](https://quarto.org/docs/output-formats/all-formats.html)):
+
+-   **Documents**: [HTML](https://quarto.org/docs/reference/formats/html.html), [PDF](https://quarto.org/docs/reference/formats/pdf.html), [MS Word](https://quarto.org/docs/reference/formats/docx.html), ...
+-   **Presentations**: [Revealjs - HTML](https://quarto.org/docs/reference/formats/presentations/revealjs.html), [PowerPoint - MS Office](https://quarto.org/docs/reference/formats/presentations/pptx.html), [Beamer - LaTeX](https://quarto.org/docs/reference/formats/presentations/beamer.html)
+-   **Markdown**: [GitHub](https://quarto.org/docs/reference/formats/markdown/gfm.html), ...
+-   **Wikis**: [MediaWiki - Wikipedia Format](https://quarto.org/docs/reference/formats/wiki/mediawiki.html), ...
+-   **More Formats**: [Jupyter](https://quarto.org/docs/reference/formats/ipynb.html), [RTF](https://quarto.org/docs/reference/formats/rtf.html)
+
+> Nützlich: [[Table/Overview - Pandoc Options](https://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf)] & [[Quarto - Examples Gallery](https://quarto.org/docs/gallery/)]
+:::
+
+
+## Documents: HTML
+
+::: {style="font-size:28px"}
+[Reference - HTML Options](https://quarto.org/docs/reference/formats/html.html)
+
+::: columns
+::: {.column width="50%"}
+**Title & Author**
+
+-   `title`: Document title
+-   `subtitle`: Identifies the subtitle of the document
+-   `date`: Document date
+-   `author`: Author or authors of the document
+-   `abstract`: Summary of document
+-   ~~`institute`: Author affiliations for the presentation~~
+:::
+
+::: {.column width="50%"}
+**Table of Contents**
+
+-   `toc`: true/false Include an automatically generated table of contents
+-   `toc-depth`: Number of section levels in toc
+:::
+:::
+
+:::
+
+## Presentations: Revealjs
+
+::: {style="font-size:28px"}
+[Reference - Revealjs Options](https://quarto.org/docs/reference/formats/presentations/revealjs.html)
+
+::: columns
+::: {.column width="50%"}
+**Title & Author**
+
+-   `title`: Document title
+-   `subtitle`: Identifies the subtitle of the document
+-   `date`: Document date
+-   `author`: Author or authors of the document
+-   ~~`abstract`: Summary of document~~
+-   `institute`: Author affiliations for the presentation
+:::
+
+::: {.column width="50%"}
+**Table of Contents**
+
+-   `toc`: TRUE/FALSE Include an automatically generated table of contents
+-   `toc-depth:` Number of section levels in toc
+-   `logo:` Logo image (placed in bottom right corner of slides)
+
+**Slides**
+
+-   `slide-number`: true/false Display the page number of the current slide
+-   `footer`: Footer to include on all slides
+:::
+:::
+
+:::
+
+
+## Documents: PDF
+::: columns
+::: {.column width="40%"}
+::: {style="font-size:28px"}
+[Reference - PDF Basics](https://quarto.org/docs/output-formats/pdf-basics.html)
+
+**Voraussetzung: Installation von Tex Distribution**
+
+Empfehlung der Nutzung von `TinyTeX` (TexLive basiert):
+:::
+```{.bash filename="TERMINAL"}
+quarto install tool tinytex
+```
+:::
+::: {.column width="60%"}
+::: {style="font-size:28px"}
+**Dokument-Klasse**
+
+Definition der Dokumentenart in `documentclass: `:
+
+- Standard: `article`, `report` o. `book` 
+- KOMA-Script-Äquivalente: `scrartcl`, `scrreprt` o. `scrbook` 
+- Jede andere Klasse aus installierten LaTeX-Paketen
+
+:::
+```{.YAML filename="YAML"}
+format:
+  pdf:
+    documentclass: scrartcl # default
+    papersize: letter # default
+```
+:::
+:::
+
+# Markdown
+
+## Gliederung
+
+**Überschriften** *(inkl. Effekt in `Revealjs`)*:
+
+-   Level 1: `#<Title>` *(erstellt neue Folie)*
+
+-   Level 2: `##<Title>` *(erstellt neue Folie)*
+
+-   Level 3: `###<Title>` *(Überschrift auf Folie)*
+
+-   ...
+
+**Abgrenzung**:
+
+-   Horizontaler Trennstrich: `---`
+-   Zeilenumbruch: `\`, `&nbsp;` oder Leerzeile 
+
+## Formatierungen
+
+-   `**Fett drucken**`: **Fett drucken**
+
+-   `*Kursiv drucken*` : *Kursiv drucken*
+
+-   `<u>Unterschreichen</u>`: <u>Unterstreichen</u>
+
+-   `> Das hier ist ein Blockzitat`:
+
+> Das hier ist ein Blockzitat
+
+## Markdown Listen
+
+::: columns
+::: {.column width="50%"}
+``` {.Markdown filename="Markdown"}
+#Code:
+1. Element
+  1.1 Element
+2. Element
+```
+
+------------------------------------------------------------------------
+
+1.  Element
+    1.  1 Element
+2.  Element
+:::
+
+::: {.column width="50%"}
+``` {.Markdown filename="Markdown"}
+#Code:
+- Element
+  - Element
+- Element
+```
+
+------------------------------------------------------------------------
+
+-   Element
+    -   Element
+-   Element
+:::
+:::
+
+## Task list
+
+**!!! NOT WORKING YET !!!**
+
+Syntax: `- [ ] Task`
+
+"x" zwischen den eckigen Klammern um als erledigt zu markieren
+
+``` {.Markdown filename="Markdown"}
+- [ ] Read sci-fi
+- [x] Watch kaiju movie
+```
+
+-   [ ] Read sci-fi
+-   [x] Watch kaiju movie
+
+## Links
+
+Syntax:`[]()`
+
+-   \[\] --- link text immerhalb der eckigen Klammern
+-   () --- link PATH/URL innerhalb der runden
+
+``` {.Markdown filename="Markdown"}
+[Dinosuars](https://en.wikipedia.org/wiki/Dinosaurs)
+
+The [New Horizons](http://pluto.jhuapl.edu/) space probe took photos of Pluto.
+```
+
+[Dinosuars](https://en.wikipedia.org/wiki/Dinosaurs)
+
+The [New Horizons](http://pluto.jhuapl.edu/) space probe took photos of Pluto.
+
+## Images
+
+Syntax: `![]()`
+
+Ausrufezeichen `!` am Anfang und danach - \[\] --- Text unterhalb des Bildes - () --- Image PATH/URL
+
+``` {.Markdown filename="Markdown"}
+![](https://upload.wikimedia.org/wikipedia/commons/e/e1/Proses_Nembok%2C_Salah_Satu_Tahapan_Membatik_Tulis.jpg)
+```
+
+![](https://upload.wikimedia.org/wikipedia/commons/e/e1/Proses_Nembok%2C_Salah_Satu_Tahapan_Membatik_Tulis.jpg)
+
+
+
+## Formeln
+::: {style="font-size:33px"}
+[Reference - Quarto Equations](https://quarto.org/docs/visual-editor/technical.html#equations)
+
+LaTeX-Gleichungen werden mit der standardmäßigen Pandoc-Markdown-Syntax erstellt (der Editor erkennt die Syntax automatisch und behandelt die Gleichung als Mathematik).
+
+::: columns
+::: {.column width="50%"}
+**Markdown Syntax**
+
+ ```{.Markdown filename="Markdown"}
+ inline math: $E = mc^{2}$
+ ```
+:::
+::: {.column width="50%"}
+**Output**
+
+inline math: $E = mc^{2}$
+:::
+:::
+
+\
+
+::: columns
+::: {.column width="50%"}
+```{.Markdown filename="Markdown"}
+ display math: 
+ $$P(E) = {n \choose k} p^k (2-p)^{l - k}$$
+ ```
+:::
+::: {.column width="50%"}
+display math: $$P(E) = {n \choose k} p^k (2-p)^{l - k}$$
+:::
+:::
+
+:::
+
+## Fußnoten
+
+::: {style="font-size:33px"}
+
+[[Reference - Quarto Footnotes](https://quarto.org/docs/authoring/footnotes-and-citations.html#footnotes)]
+
+**Input:**
+```{.Markdown filename="Markdown"}
+Here is a footnote reference,[^1] and another.[^longnote]
+
+[^1]: Here is the footnote.
+
+[^longnote]: Here's one with multiple blocks.
+  Subsequent paragraphs are indented.
+
+        { some.code }
+```
+
+**Output:**
+
+Here is a footnote reference,[^1] and another.[^longnote]
+
+:::
+
+[^1]: Here is the footnote.
+
+[^longnote]: Here's one with multiple blocks.
+  Subsequent paragraphs are indented to show that they
+belong to the previous footnote.
+
+         print(1+2) code 4xindented
+
+
+## Zitation
+::: {style="font-size:30px"}
+[[Reference - Quarto Citations](https://quarto.org/docs/authoring/footnotes-and-citations.html#citations)]
+
+Quarto verwendet **Pandoc** zur Formatierung von Zitaten und Bibliografien. Es unterstützt Bibliographiedateien in verschiedenen Formaten, einschließlich [BibLaTeX (.bib)](https://ctan.org/pkg/biblatex?lang=de), [BibTeX (.bibtex)](https://www.bibtex.org/Format/de/) und [Citation Style Language (.csl)](https://github.com/citation-style-language/styles). 
+
+- Bibliographiedateien können im YAML-Metadatenfeld `bibliography:` definiert werden
+- Benutzerdefiniertes Zitat-Stylesheet können im YAML-Metadatenfeld `csl:` bereitgestellt werden *(Default: Autorendatumsformat des Chicago Manual of Style)*
+:::
+
+```{.Markdown filename="Markdown"}
+---
+title: "My Document"
+bibliography: references.bib
+csl: american-sociological-association.csl
+---
+```
+
+
+
+## Syntax-Zitation
+::: {style="font-size:32px"}
+| Markdown Input | Output (author-date format) |
+| --- | --- |
+| ` R Markdown: The Definitive Guide [see @Xie:2018, pp. 20-22] ` | R Markdown: The Definitive Guide [see @Xie:2018, pp. 20-22] | 
+| ` Reproducible Research with R and RStudio [@Gandrud:2020]` | Reproducible Research with R and RStudio [@Gandrud:2020] |
+| ` Nach Mang ... [-@Mang:2023]` | Nach Mittelbach ... [-@Mang:2023] |
+| ` @Pruim:2022 sagt ...` | @Pruim:2022 sagt ... |
+| ` @Bauer:2023 [p. 33] beschreibt ...` | @Bauer:2023 [p. 33] beschreibt ... |
+:::
+
+
+## Literaturverzeichnis erstellen
+Standardmäßig erstellt Pandoc automatisch eine Liste der zitierten Werke und platziert sie am Ende des Dokuments. Alternativ wird das Literaturverzeichnis in einem Div mit der ID `refs` platziert, falls vorhanden (Code an Ende des Dokuments setzen):
+
+```{.Markdown filename="Markdown"}
+### References
+
+::: {#refs}
+:::
+```
+
+## LaTeX and HTML
+::: {style="font-size:32px"}
+Rohe LaTeX-Befehle oder HTML-Tags können aus *inline* Code oder in Code Blocks eingebunden werden:
+
+```{.Markdown filename="Markdown"}
+Das \pkg{shiny} Paket nutzt viel \proglang{JavaScript}.
+```
+
+Das \pkg{shiny} Paket nutzt viel \proglang{JavaScript}.
+
+\begin{tabular}{ll}
+A & B
+A & B
+\end{tabular}
+
+> Achtung! Pandoc ignoriert LaTeX-Befehle, wenn keine LaTeX-basierte Ausgabe erstellt wird, und ignoriert HTML-Tags, wenn keine HTML-basierte Ausgabe erstellt wird
+:::
+
+# Quarto
+
+## Verify Quarto installation
+
+Überprüfen, ob die Quarto-Installation erfolgreich war:
+```{.bash filename="TERMINAL"}
+quarto check
+```
+
+
+## Visual Editing in VS Code
+
+[Reference](https://quarto.org/docs/visual-editor/vscode/) "The Quarto VS Code Extension includes a visual markdown editor that supports all of Quarto's markdown syntax including tables, citations, and more:" ![](https://quarto.org/docs/visual-editor/images/vscode-visual-editor.png)
+
+## Coding
+
+**Inline Code:** \`print(1+1)\`
+
+\
+
+**Code Cells:**
+
+::: columns
+::: {.column width="50%"}
+*VSCode/Python:*\
+
+\`\`\`{python}\
+#\| eval: false\
+#\| echo: true\
+print(1+1)\
+\`\`\`
+:::
+
+::: {.column width="50%"}
+*Rstudio/R:*\
+
+\`\`\`{python, eval=F, echo=T}\
+print(1+1)\
+\`\`\`
+:::
+:::
+
+## Code Cell Optionen
+
+-   [Quarto - References](https://quarto.org/docs/reference/)
+
+| Option  | Beschreibung                                          |
+|---------|-------------------------------------------------------|
+| results | 'hide': Ergebnisse nicht anzeigen                     |
+| echo    | Code Cell anzeigen (TRUE) oder nicht anzeigen (FALSE) |
+
+-   [Code Cells: Jupyter](https://quarto.org/docs/reference/cells/cells-jupyter.html)
+-   [Code Cells: Knitr](https://quarto.org/docs/reference/cells/cells-knitr.html)
+
+## Examplary Code Cell I
+::: {style="font-size:28px"}
+```{python}
+#| echo: true
+import pandas as pd
+data = pd.read_csv("files/data/titanic_test.csv")
+data.describe()
+```
+:::
+
+## Examplary Code Cell II
+::: {style="font-size:28px"}
+```{python}
+#| echo: true
+#| fig-cap: Bill Sizes by Species
+df = pd.read_csv("files/data/penguins.csv")
+import matplotlib.pyplot as plt
+import seaborn as sns
+g = sns.FacetGrid(df, hue="species", height=3.5, aspect=3.5/2)
+g.map(plt.scatter, "bill_length_mm", "bill_depth_mm").add_legend()
+```
+:::
+
+
+## Literatur
+
+::: {#refs}
+:::

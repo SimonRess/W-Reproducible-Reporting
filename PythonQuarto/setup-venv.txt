@@ -1,0 +1,29 @@
+#Open Windows Terminal
+
+	#navigate to folder
+	cd C:\Users\sress\Documents\Projects\new\
+
+	#setup new venv
+	python -m venv .venv
+
+#In VSCODE
+	#run one Code Cell -> will activate .venv and ask to install ipython Kernal
+
+	#"Render" to get the message that "nbformat" is missing
+	pip install nbformat
+
+	# render again -> "nbclient" is also missing
+	pip install nbclient
+
+	#render again
+
+#Activate Env:
+	In Terminal:
+	.\.venv\Scripts\activate
+
+#Install libraries
+	pip install nbformat # for quarto rendering
+	pip install nbclient # for quarto rendering
+	pip install pandas 
+	pip install matplotlib
+	pip install seaborn
