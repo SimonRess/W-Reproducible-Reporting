@@ -1,0 +1,233 @@
+---
+title: "Einführung in Quarto"
+author: "Simon Ress"
+format: 
+  # html
+  revealjs:
+    slide-number: true
+    footer: <https://www.mt-itsolutions.com/>
+    logo: files/MT_GMBH_Logo.jpg
+    toc: true
+    toc-title: "Inhalt"
+    toc-depth: 1
+    code-fold: true
+editor: visual
+execute: 
+  echo: false
+---
+
+# Quatro and R
+
+## Examplary Code Cell I
+
+::: {style="font-size:28px"}
+```{r}
+#| echo: true
+data = read.csv("files/data/titanic_test.csv")
+summary(data)
+```
+:::
+
+## Examplary Code Cell I
+::: 
+[[Reference - palmerpenguins](https://allisonhorst.github.io/palmerpenguins/index.html)]
+```{r}
+if(!require("palmerpenguins")) install.packages("palmerpenguins")
+library(palmerpenguins)
+if(!require("ggplot2")) install.packages("ggplot2")
+library(ggplot2)
+
+ggplot(data = penguins, 
+       aes(x = flipper_length_mm,
+           y = body_mass_g)) +
+geom_point(aes(color = species, 
+               shape = species),
+           size = 3,
+           alpha = 0.8) +
+scale_color_manual(values = c("darkorange","purple","cyan4")) +
+labs(title = "Penguin size, Palmer Station LTER",
+     subtitle = "Flipper length and body mass for Adelie, Chinstrap and Gentoo Penguins",
+     x = "Flipper length (mm)",
+     y = "Body mass (g)",
+     color = "Penguin species",
+     shape = "Penguin species") +
+theme(legend.position = c(0.2, 0.7),
+      plot.title.position = "plot",
+      plot.caption = element_text(hjust = 0, face= "italic"),
+      plot.caption.position = "plot")
+```
+
+
+# {rgpt}
+
+## {rgpt}: Allgemein
+
+-   Format: Lokale Funktion in R
+-   Funktion: Coding mittels Prompting
+    -   Kommuniziert mit OpenAI-API ("https://api.openai.com/v1/chat/completions") -\> `apiKey` benötigt
+    -   Genutztes Modell: "gpt-3.5-turbo"
+    -   Bereitet Antwort auf und führt Code direkt in R aus
+    -   Beachtet Kontext der bisherigen Konversation
+
+## {rgpt} Prompt Engineering
+
+-   Definiert Verhalten mittels "Initial Prompt": \> "You are an R coding assistant. For the rest of this conversation, return R code only. Do not include anything else such as extra characters or comments. DO NOT install any packages but assume I already have them installed. Prompt:"
+
+-   Ergänzt spätere Prompts um vorherige Konversation -\> keine Datenübermittlung!
+
+## Anwendung
+
+```{r}
+
+library(dplyr)
+library(httr)
+library(jsonlite)
+
+g = function(prompt = NULL, apiKey= Sys.getenv("openai_secret_key"), reset = FALSE) { #, log.file=FALSE
+  
+#Logging console output
+  #if(log.file){
+    #log = file("logfile.txt") 
+    #sink(log, append = TRUE, type = "output")
+    #sink(log, append = TRUE, type = "message")
+  #}
+  
+  
+#Prompt Engineering: Specify output format/content-type
+prompt.embedded = paste(
+"You are an R coding assistant. For the rest of this conversation, return R code only.
+Do not include anything else such as extra characters or comments.
+DO NOT install any packages but assume I already have them installed.
+Prompt: ",  substr(prompt,2, nchar(prompt)))
+
+#Create initial context
+  if(!exists("openai_completions") | reset){
+    openai_completions<<-
+    list(
+      list(
+        role = 'user',
+        content = prompt.embedded
+        )
+      )
+  }
+
+#add prompt to context
+  openai_completions <<-
+        append(
+          openai_completions,
+          list(
+            list(
+              role = 'user',
+              content = substr(prompt,2, nchar(prompt))
+            )
+          )
+        )
+
+#Post request
+  response <- POST(
+    url = "https://api.openai.com/v1/chat/completions",
+    add_headers(Authorization = paste("Bearer", apiKey)),
+    content_type_json(),
+    encode = "json",
+    body = list(
+      model = "gpt-3.5-turbo",
+      temperature = 0.5,
+      #messages = list(list(
+      #  role = "user",
+      #  content = as.character(openai_completions)
+      #))
+      messages = openai_completions
+    )
+  )
+
+#Save Response
+  print = content(response)$choices[[1]]$message$content
+  #rough check if response is R Code, contains functions, flag as a comment
+  if(!grepl("[a-z]\\(", print)) print = paste0("#", print)
+
+
+#Send prompt to console
+  rstudioapi::sendToConsole(paste0("#",prompt), execute = TRUE)
+  
+#Send the R comments to the console
+  rstudioapi::sendToConsole(code = print %>%
+                              stringr::str_remove('^\n') %>%
+                              stringr::str_remove('^R') %>%
+                              stringr::str_remove_all('\\`\\`\\`\\{r\\}') %>%
+                              stringr::str_remove_all('\\`\\`\\`') %>%
+                              stringr::str_trim(side = 'left'),
+                              execute = TRUE, echo = TRUE)
+
+
+
+#add response to context
+  openai_completions <<-
+        append(
+          openai_completions,
+          list(
+            content(response)$choices[[1]]$message
+          )
+        )
+
+  
+#Close connection to log file
+  #if(log.file){
+    #closeAllConnections()
+  #}
+  
+    
+}
+```
+
+*Input:*
+
+```{r, echo=T, eval = F}
+g("Return an overview of the iris dataset")
+```
+
+\
+
+*Output:*
+
+```{r, echo=T}
+#Return an overview of the iris dataset
+head(iris)
+```
+
+# <gapminder> Daten analysieren mit {rgpt}
+
+## Datensatz gapminder
+
+Lade das Paket gapminder aus der Library gapminder
+```{r}
+library(gapminder)
+library(ggplot2)
+```
+
+## Struktur des Datensatzes
+
+Wie ist die Struktur des Datensatzes
+ 
+```{r}
+str(gapminder)
+```
+
+
+## Daten von 1952
+Verwende nur die Daten von 1952
+```{r}
+gapminder$log_gdpPercap <- log(gapminder$gdpPercap)
+gapminder_1952 <- gapminder[gapminder$year == 1952, ]
+
+ggplot(gapminder_1952, aes(x = log_gdpPercap, y = lifeExp, color = continent, size = pop)) + geom_point()
+```
+
+
+## Daten von 2007
+Verwende nur die Daten von 1952
+```{r}
+gapminder_2007 <- gapminder[gapminder$year == 2007, ]
+
+ggplot(gapminder_2007, aes(x = log_gdpPercap, y = lifeExp, color = continent, size = pop)) + geom_point()
+```
+
