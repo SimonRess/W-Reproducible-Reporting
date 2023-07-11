@@ -20,18 +20,29 @@ execute:
 
 ## Examplary Code Cell I
 
-::: {style="font-size:28px"}
+::: {style="font-size:22px"}
 ```{r}
 #| echo: true
+#| label: tbl-titanic-summary
+#| tbl-cap: |
+#|   Summary of the titanic data
+library(knitr)
 data = read.csv("files/data/titanic_test.csv")
-summary(data)
+knitr::kable(summary(data))
 ```
 :::
 
 ## Examplary Code Cell I
-::: 
-[[Reference - palmerpenguins](https://allisonhorst.github.io/palmerpenguins/index.html)]
+
+::: \[[Reference - palmerpenguins](https://allisonhorst.github.io/palmerpenguins/index.html)\]
+
 ```{r}
+#| echo: true
+#| label: fig-size-flipper-length-species
+#| fig-cap: |
+#|   A scatterplot of penguins' size and flipper length, colored by 
+#|   species of penguins
+
 if(!require("palmerpenguins")) install.packages("palmerpenguins")
 library(palmerpenguins)
 if(!require("ggplot2")) install.packages("ggplot2")
@@ -57,6 +68,22 @@ theme(legend.position = c(0.2, 0.7),
       plot.caption.position = "plot")
 ```
 
+## Referencing
+::: {style="font-size:28px"}
+**Grafiken**
+
+-   Das `#| label:` der Grafik muss mit dem Sufix *fig-* beginnen
+-   Es muss eine `#| fig-cap:` enthalten sein
+-   Verweis auf die Grafik mit `@` + dem gewählten `#| label:`
+-   Beispiel: Hier ein Verweis auf den Plot @fig-size-flipper-length-species
+
+**Tabellen**
+
+-   Das `#| label:` der Grafik muss mit dem Sufix *tbl-* beginnen
+-   Es muss eine `#| tbl-cap:` enthalten sein
+-   Verweis auf die Grafik mit `@` + dem gewählten `#| label:`
+-   Beispiel: Hier ein Verweis auf den Plot @tbl-titanic-summary
+:::
 
 # {rgpt}
 
@@ -199,6 +226,7 @@ head(iris)
 ## Datensatz gapminder
 
 Lade das Paket gapminder aus der Library gapminder
+
 ```{r}
 library(gapminder)
 library(ggplot2)
@@ -207,14 +235,15 @@ library(ggplot2)
 ## Struktur des Datensatzes
 
 Wie ist die Struktur des Datensatzes
- 
+
 ```{r}
 str(gapminder)
 ```
 
-
 ## Daten von 1952
+
 Verwende nur die Daten von 1952
+
 ```{r}
 gapminder$log_gdpPercap <- log(gapminder$gdpPercap)
 gapminder_1952 <- gapminder[gapminder$year == 1952, ]
@@ -222,12 +251,12 @@ gapminder_1952 <- gapminder[gapminder$year == 1952, ]
 ggplot(gapminder_1952, aes(x = log_gdpPercap, y = lifeExp, color = continent, size = pop)) + geom_point()
 ```
 
-
 ## Daten von 2007
+
 Verwende nur die Daten von 1952
+
 ```{r}
 gapminder_2007 <- gapminder[gapminder$year == 2007, ]
 
 ggplot(gapminder_2007, aes(x = log_gdpPercap, y = lifeExp, color = continent, size = pop)) + geom_point()
 ```
-

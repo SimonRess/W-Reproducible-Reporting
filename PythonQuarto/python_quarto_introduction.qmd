@@ -1,4 +1,5 @@
 ---
+#In VSCode, activate .venv: .venv/Scripts/activate.bat
 title: "Einführung in Quarto"
 author: "Simon Ress"
 format: 
@@ -17,6 +18,17 @@ editor: visual
 bibliography: files/references.bib #Bibliography File(s)
 #csl: nature.csl #Citation Style
 ---
+
+# Quarto Nutzung
+
+## Voraussetzungen
+
+- Installation einer unterstützenden IDE: VSCode oder RStudio
+- In VSCode:
+  - Installation Quarto Extension
+  - Installation Python Extension (wenn Python Code verwendet) & Path unter Settings festlegen
+  - Installation R Extension (wenn Python Code verwendet) & Path unter Settings festlegen
+  - .venv erstellen: python -m venv .venv
 
 # YAML: Project Metadata
 
@@ -240,6 +252,18 @@ Ausrufezeichen `!` am Anfang und danach - \[\] --- Text unterhalb des Bildes - (
 ![](https://upload.wikimedia.org/wikipedia/commons/e/e1/Proses_Nembok%2C_Salah_Satu_Tahapan_Membatik_Tulis.jpg)
 
 
+## Images: Position bestimmen
+
+- Positionieren der Bilder oder andere Elemente an präzisen Orten
+- Auswahl der Attribute `top`, `right` und `width`
+- z.B. `{.absolute .fragment top="150" right="80" width="450"}`
+
+``` {.Markdown filename="Markdown"}
+![](https://upload.wikimedia.org/wikipedia/commons/e/e1/Proses_Nembok%2C_Salah_Satu_Tahapan_Membatik_Tulis.jpg){.absolute .fragment top="150" right="80" width="450"}
+```
+
+![](https://upload.wikimedia.org/wikipedia/commons/e/e1/Proses_Nembok%2C_Salah_Satu_Tahapan_Membatik_Tulis.jpg){.absolute .fragment top="150" right="80" width="450"}
+
 
 ## Formeln
 ::: {style="font-size:33px"}
@@ -355,7 +379,8 @@ Standardmäßig erstellt Pandoc automatisch eine Liste der zitierten Werke und p
 
 ## LaTeX and HTML
 ::: {style="font-size:32px"}
-Rohe LaTeX-Befehle oder HTML-Tags können aus *inline* Code oder in Code Blocks eingebunden werden:
+- Rohe LaTeX-Befehle oder HTML-Tags können aus *inline* Code oder in Code Blocks eingebunden werden
+- [MathJax](https://www.mathjax.org/) rendert der Gleichungen zu HTML
 
 ```{.Markdown filename="Markdown"}
 Das \pkg{shiny} Paket nutzt viel \proglang{JavaScript}.
@@ -363,10 +388,12 @@ Das \pkg{shiny} Paket nutzt viel \proglang{JavaScript}.
 
 Das \pkg{shiny} Paket nutzt viel \proglang{JavaScript}.
 
+``` tex
 \begin{tabular}{ll}
 A & B
 A & B
 \end{tabular}
+```
 
 > Achtung! Pandoc ignoriert LaTeX-Befehle, wenn keine LaTeX-basierte Ausgabe erstellt wird, und ignoriert HTML-Tags, wenn keine HTML-basierte Ausgabe erstellt wird
 :::
@@ -389,9 +416,9 @@ quarto check
 
 **Inline Code:** \`print(1+1)\`
 
-\
-
 **Code Cells:**
+
+Über 20 [*Themes*](https://quarto.org/docs/output-formats/html-code.html#highlighting) für *syntax highlighting* verfügbar (üner 140 Sprachen unterstützte Sprachen, Liste: `quarto pandoc --list-highlight-languages`)
 
 ::: columns
 ::: {.column width="50%"}
@@ -402,6 +429,12 @@ quarto check
 #\| echo: true\
 print(1+1)\
 \`\`\`
+
+```{python}
+#| eval: false
+#| echo: true
+print(1+1)
+```
 :::
 
 ::: {.column width="50%"}
@@ -410,6 +443,11 @@ print(1+1)\
 \`\`\`{python, eval=F, echo=T}\
 print(1+1)\
 \`\`\`
+```{r}
+#| eval: false
+#| echo: true
+print(1+1)
+```
 :::
 :::
 
@@ -420,13 +458,14 @@ print(1+1)\
 | Option  | Beschreibung                                          |
 |---------|-------------------------------------------------------|
 | results | 'hide': Ergebnisse nicht anzeigen                     |
-| echo    | Code Cell anzeigen (TRUE) oder nicht anzeigen (FALSE) |
+| echo    | Code Cell anzeigen (true) oder nicht anzeigen (false) |
+| eval    | Ausführung des Codes true/false |
 
 -   [Code Cells: Jupyter](https://quarto.org/docs/reference/cells/cells-jupyter.html)
 -   [Code Cells: Knitr](https://quarto.org/docs/reference/cells/cells-knitr.html)
 
 ## Examplary Code Cell I
-::: {style="font-size:28px"}
+::: {style="font-size:30px"}
 ```{python}
 #| echo: true
 import pandas as pd
@@ -435,10 +474,24 @@ data.describe()
 ```
 :::
 
-## Examplary Code Cell II
-::: {style="font-size:28px"}
+
+## Examplary Code Cell II {auto-animate="true"}
 ```{python}
+#| eval: false
 #| echo: true
+#| code-fold: false
+df = pd.read_csv("files/data/penguins.csv")
+import matplotlib.pyplot as plt
+import seaborn as sns
+```
+
+
+
+## Code Animations {auto-animate="true"}
+```{python}
+#| eval: false
+#| echo: true
+#| code-fold: false
 #| fig-cap: Bill Sizes by Species
 df = pd.read_csv("files/data/penguins.csv")
 import matplotlib.pyplot as plt
@@ -446,7 +499,133 @@ import seaborn as sns
 g = sns.FacetGrid(df, hue="species", height=3.5, aspect=3.5/2)
 g.map(plt.scatter, "bill_length_mm", "bill_depth_mm").add_legend()
 ```
+
+- Aktivierung der Code Animation: hinter Überschrift `{auto-animate="true"}` schreiben (z.B. `## Code Animations {auto-animate="true"}`)
+- [Referenz - Code Animations](https://quarto.org/docs/presentations/revealjs/advanced.html#code-animations)
+
+
+## Line Highlighting
+::: {style="font-size:30px"}
+- Markieren bestimmter Zeilen zur Hervorhebung
+  - In Code Cell Header die Zeile in `code-line-numbers` definieren (z.B. `{.python code-line-numbers="4"}`) 
+- Schrittweise zusätzliche Zeilen Markieren
+  - In Code Cell Header mehrere Zeile in `code-line-numbers` definieren (z.B. `{.python code-line-numbers="4-5|7|10"}`)
 :::
+``` {.python code-line-numbers="4-5|7|10"}
+import numpy as np
+import matplotlib.pyplot as plt
+
+r = np.arange(0, 2, 0.01)
+theta = 2 * np.pi * r
+fig, ax = plt.subplots(subplot_kw={'projection': 'polar'})
+ax.plot(theta, r)
+ax.set_rticks([0.5, 1, 1.5, 2])
+ax.grid(True)
+plt.show()
+```
+
+::: footer
+[Referenz - Line Highlighting](https://quarto.org/docs/presentations/revealjs/#line-highlighting)
+:::
+
+
+## Slide Antimations {.smaller .scrollable transition="slide"}
+
+- Hinter Überschrift `{.smaller .scrollable transition="slide"}`
+
+
+## Tabsets 
+
+::: panel-tabset
+### Plot
+
+```{r}
+#| eval: true
+#| echo: true
+library(ggplot2)
+ggplot(mtcars, aes(hp, mpg, color = am)) +
+  geom_point() +
+  geom_smooth(formula = y ~ x, method = "loess")
+```
+
+### Data
+
+```{r}
+#| eval: true
+#| echo: true
+knitr::kable(mtcars)
+```
+:::
+
+::: footer
+Learn more: [Tabsets](https://quarto.org/docs/presentations/revealjs/#tabsets)
+:::
+
+
+## Interactive Slides
+
+- Jupyter-Widgets und HTML-Widgets in Präsentationen einfügen
+
+```{r}
+#| eval: true
+#| echo: true
+#| fig-height: 5
+if(!require("leaflet")) install.packages("leaflet")
+library(leaflet)
+leaflet() %>%
+  addTiles() %>%  # Add default OpenStreetMap map tiles
+  addMarkers(lng=174.768, lat=-36.852, popup="The birthplace of R")
+```
+
+::: footer
+Learn more: [Jupyter widgets](https://quarto.org/docs/interactive/widgets/jupyter.html), [htmlwidgets](https://quarto.org/docs/interactive/widgets/htmlwidgets.html)
+:::
+
+
+## Chalkboard {chalkboard-buttons="true"}
+
+You can also press `b` to toggle the chalkboard or `c` to toggle the notes canvas.
+
+::: footer
+Learn more: [Chalkboard](https://quarto.org/docs/presentations/revealjs/presenting.html#chalkboard)
+:::
+
+
+## Point of View
+
+Press `o` to toggle overview mode:
+
+Hold down the `Alt` key (or `Ctrl` in Linux) and click on any element to zoom towards it---try it now on this slide.
+
+::: footer
+Learn more: [Overview Mode](https://quarto.org/docs/presentations/revealjs/presenting.html#overview-mode), [Slide Zoom](https://quarto.org/docs/presentations/revealjs/presenting.html#slide-zoom)
+:::
+
+
+
+## Speaker View
+
+Press `s` (or use the presentation menu) to open speaker view
+
+::: footer
+Learn more: [Speaker View](https://quarto.org/docs/presentations/revealjs/presenting.html#speaker-view)
+:::
+
+
+
+## Easy Navigation
+
+- Quickly jump to other parts of your presentation
+
+- Toggle the slide menu with the menu button (bottom left of slide) to go to other slides and access presentation tools.
+
+- You can also press `m` to toggle the menu open and closed.
+
+::: footer
+Learn more: [Navigation](https://quarto.org/docs/presentations/revealjs/presenting.html#navigation-menu)
+:::
+
+
 
 
 ## Literatur

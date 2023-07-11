@@ -401,9 +401,15 @@
       margin-right: 0; 
     }
   </style>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
-  <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+  <script src="python_quarto_introduction_files/libs/htmlwidgets-1.6.1/htmlwidgets.js"></script>
+  <script src="python_quarto_introduction_files/libs/jquery-1.12.4/jquery.min.js"></script>
+  <link href="python_quarto_introduction_files/libs/leaflet-1.3.1/leaflet.css" rel="stylesheet">
+  <script src="python_quarto_introduction_files/libs/leaflet-1.3.1/leaflet.js"></script>
+  <link href="python_quarto_introduction_files/libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet">
+  <script src="python_quarto_introduction_files/libs/proj4-2.6.2/proj4.min.js"></script>
+  <script src="python_quarto_introduction_files/libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
+  <link href="python_quarto_introduction_files/libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet">
+  <script src="python_quarto_introduction_files/libs/leaflet-binding-2.1.2/leaflet.js"></script>
 </head>
 <body class="quarto-light">
   <div class="reveal">
@@ -417,6 +423,7 @@
 <nav role="doc-toc"> 
 <h2 id="toc-title">Inhalt</h2>
 <ul>
+<li><a href="#/quarto-nutzung" id="/toc-quarto-nutzung">Quarto Nutzung</a></li>
 <li><a href="#/yaml-project-metadata" id="/toc-yaml-project-metadata">YAML: Project Metadata</a></li>
 <li><a href="#/markdown" id="/toc-markdown">Markdown</a></li>
 <li><a href="#/quarto" id="/toc-quarto">Quarto</a></li>
@@ -424,6 +431,24 @@
 </nav>
 </section>
 
+<section>
+<section id="quarto-nutzung" class="title-slide slide level1 center">
+<h1>Quarto Nutzung</h1>
+
+</section>
+<section id="voraussetzungen" class="slide level2">
+<h2>Voraussetzungen</h2>
+<ul>
+<li>Installation einer unterstützenden IDE: VSCode oder RStudio</li>
+<li>In VSCode:
+<ul>
+<li>Installation Quarto Extension</li>
+<li>Installation Python Extension (wenn Python Code verwendet) &amp; Path unter Settings festlegen</li>
+<li>Installation R Extension (wenn Python Code verwendet) &amp; Path unter Settings festlegen</li>
+<li>.venv erstellen: python -m venv .venv</li>
+</ul></li>
+</ul>
+</section></section>
 <section>
 <section id="yaml-project-metadata" class="title-slide slide level1 center">
 <h1>YAML: Project Metadata</h1>
@@ -659,6 +684,21 @@
 </div>
 
 <img data-src="https://upload.wikimedia.org/wikipedia/commons/e/e1/Proses_Nembok%2C_Salah_Satu_Tahapan_Membatik_Tulis.jpg" class="r-stretch"></section>
+<section id="images-position-bestimmen" class="slide level2">
+<h2>Images: Position bestimmen</h2>
+<ul>
+<li>Positionieren der Bilder oder andere Elemente an präzisen Orten</li>
+<li>Auswahl der Attribute <code>top</code>, <code>right</code> und <code>width</code></li>
+<li>z.B. <code>{.absolute .fragment top="150" right="80" width="450"}</code></li>
+</ul>
+<div class="code-with-filename">
+<div class="code-with-filename-file">
+<pre><strong>Markdown</strong></pre>
+</div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource Markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb8-1"><a href="#cb8-1"></a><span class="al">![](https://upload.wikimedia.org/wikipedia/commons/e/e1/Proses_Nembok%2C_Salah_Satu_Tahapan_Membatik_Tulis.jpg)</span>{.absolute .fragment top="150" right="80" width="450"}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><img data-src="https://upload.wikimedia.org/wikipedia/commons/e/e1/Proses_Nembok%2C_Salah_Satu_Tahapan_Membatik_Tulis.jpg" class="absolute fragment" style="top: 150px; right: 80px; width: 450px; "></p>
+</section>
 <section id="formeln" class="slide level2">
 <h2>Formeln</h2>
 <div style="font-size:33px">
@@ -671,7 +711,7 @@
 <div class="code-with-filename-file">
 <pre><strong>Markdown</strong></pre>
 </div>
-<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource Markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb8-1"><a href="#cb8-1"></a><span class="an">inline math:</span><span class="co"> $E = mc^{2}$</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource Markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb9-1"><a href="#cb9-1"></a><span class="an">inline math:</span><span class="co"> $E = mc^{2}$</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div><div class="column" style="width:50%;">
 <p><strong>Output</strong></p>
@@ -686,8 +726,8 @@
 <div class="code-with-filename-file">
 <pre><strong>Markdown</strong></pre>
 </div>
-<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource Markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb9-1"><a href="#cb9-1"></a> display math: </span>
-<span id="cb9-2"><a href="#cb9-2"></a> $$P(E) = {n \choose k} p^k (2-p)^{l - k}$$</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource Markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb10-1"><a href="#cb10-1"></a> display math: </span>
+<span id="cb10-2"><a href="#cb10-2"></a> $$P(E) = {n \choose k} p^k (2-p)^{l - k}$$</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div><div class="column" style="width:50%;">
 <p>display math: <span class="math display">\[P(E) = {n \choose k} p^k (2-p)^{l - k}\]</span></p>
@@ -704,14 +744,14 @@
 <div class="code-with-filename-file">
 <pre><strong>Markdown</strong></pre>
 </div>
-<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource Markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb10-1"><a href="#cb10-1"></a>Here is a footnote reference,<span class="ot">[^1]</span> and another.<span class="ot">[^longnote]</span></span>
-<span id="cb10-2"><a href="#cb10-2"></a></span>
-<span id="cb10-3"><a href="#cb10-3"></a><span class="ot">[^1]: </span>Here is the footnote.</span>
-<span id="cb10-4"><a href="#cb10-4"></a></span>
-<span id="cb10-5"><a href="#cb10-5"></a><span class="ot">[^longnote]: </span>Here's one with multiple blocks.</span>
-<span id="cb10-6"><a href="#cb10-6"></a>  Subsequent paragraphs are indented.</span>
-<span id="cb10-7"><a href="#cb10-7"></a></span>
-<span id="cb10-8"><a href="#cb10-8"></a><span class="in">        { some.code }</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource Markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb11-1"><a href="#cb11-1"></a>Here is a footnote reference,<span class="ot">[^1]</span> and another.<span class="ot">[^longnote]</span></span>
+<span id="cb11-2"><a href="#cb11-2"></a></span>
+<span id="cb11-3"><a href="#cb11-3"></a><span class="ot">[^1]: </span>Here is the footnote.</span>
+<span id="cb11-4"><a href="#cb11-4"></a></span>
+<span id="cb11-5"><a href="#cb11-5"></a><span class="ot">[^longnote]: </span>Here's one with multiple blocks.</span>
+<span id="cb11-6"><a href="#cb11-6"></a>  Subsequent paragraphs are indented.</span>
+<span id="cb11-7"><a href="#cb11-7"></a></span>
+<span id="cb11-8"><a href="#cb11-8"></a><span class="in">        { some.code }</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>Output:</strong></p>
 <p>Here is a footnote reference,<sup>1</sup> and another.<sup>2</sup></p>
@@ -733,11 +773,11 @@
 <div class="code-with-filename-file">
 <pre><strong>Markdown</strong></pre>
 </div>
-<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource Markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb12-1"><a href="#cb12-1"></a><span class="co">---</span></span>
-<span id="cb12-2"><a href="#cb12-2"></a><span class="an">title:</span><span class="co"> "My Document"</span></span>
-<span id="cb12-3"><a href="#cb12-3"></a><span class="an">bibliography:</span><span class="co"> references.bib</span></span>
-<span id="cb12-4"><a href="#cb12-4"></a><span class="an">csl:</span><span class="co"> american-sociological-association.csl</span></span>
-<span id="cb12-5"><a href="#cb12-5"></a><span class="co">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource Markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb13-1"><a href="#cb13-1"></a><span class="co">---</span></span>
+<span id="cb13-2"><a href="#cb13-2"></a><span class="an">title:</span><span class="co"> "My Document"</span></span>
+<span id="cb13-3"><a href="#cb13-3"></a><span class="an">bibliography:</span><span class="co"> references.bib</span></span>
+<span id="cb13-4"><a href="#cb13-4"></a><span class="an">csl:</span><span class="co"> american-sociological-association.csl</span></span>
+<span id="cb13-5"><a href="#cb13-5"></a><span class="co">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="syntax-zitation" class="slide level2">
@@ -786,23 +826,30 @@
 <div class="code-with-filename-file">
 <pre><strong>Markdown</strong></pre>
 </div>
-<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource Markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb13-1"><a href="#cb13-1"></a><span class="fu">### References</span></span>
-<span id="cb13-2"><a href="#cb13-2"></a></span>
-<span id="cb13-3"><a href="#cb13-3"></a>::: {#refs}</span>
-<span id="cb13-4"><a href="#cb13-4"></a>:::</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource Markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb14-1"><a href="#cb14-1"></a><span class="fu">### References</span></span>
+<span id="cb14-2"><a href="#cb14-2"></a></span>
+<span id="cb14-3"><a href="#cb14-3"></a>::: {#refs}</span>
+<span id="cb14-4"><a href="#cb14-4"></a>:::</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="latex-and-html" class="slide level2">
 <h2>LaTeX and HTML</h2>
 <div style="font-size:32px">
-<p>Rohe LaTeX-Befehle oder HTML-Tags können aus <em>inline</em> Code oder in Code Blocks eingebunden werden:</p>
+<ul>
+<li>Rohe LaTeX-Befehle oder HTML-Tags können aus <em>inline</em> Code oder in Code Blocks eingebunden werden</li>
+<li><a href="https://www.mathjax.org/">MathJax</a> rendert der Gleichungen zu HTML</li>
+</ul>
 <div class="code-with-filename">
 <div class="code-with-filename-file">
 <pre><strong>Markdown</strong></pre>
 </div>
-<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource Markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb14-1"><a href="#cb14-1"></a>Das \pkg{shiny} Paket nutzt viel \proglang{JavaScript}.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource Markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb15-1"><a href="#cb15-1"></a>Das \pkg{shiny} Paket nutzt viel \proglang{JavaScript}.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Das Paket nutzt viel .</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource tex number-lines code-with-copy"><code class="sourceCode latex"><span id="cb16-1"><a href="#cb16-1"></a><span class="kw">\begin</span>{<span class="ex">tabular</span>}{ll}</span>
+<span id="cb16-2"><a href="#cb16-2"></a>A <span class="op">&amp;</span> B</span>
+<span id="cb16-3"><a href="#cb16-3"></a>A <span class="op">&amp;</span> B</span>
+<span id="cb16-4"><a href="#cb16-4"></a><span class="kw">\end</span>{<span class="ex">tabular</span>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <blockquote>
 <p>Achtung! Pandoc ignoriert LaTeX-Befehle, wenn keine LaTeX-basierte Ausgabe erstellt wird, und ignoriert HTML-Tags, wenn keine HTML-basierte Ausgabe erstellt wird</p>
 </blockquote>
@@ -820,7 +867,7 @@
 <div class="code-with-filename-file">
 <pre><strong>TERMINAL</strong></pre>
 </div>
-<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1"></a><span class="ex">quarto</span> check</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1"></a><span class="ex">quarto</span> check</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="visual-editing-in-vs-code" class="slide level2">
@@ -830,9 +877,8 @@
 <section id="coding" class="slide level2">
 <h2>Coding</h2>
 <p><strong>Inline Code:</strong> `print(1+1)`</p>
-<p><br>
-</p>
 <p><strong>Code Cells:</strong></p>
+<p>Über 20 <a href="https://quarto.org/docs/output-formats/html-code.html#highlighting"><em>Themes</em></a> für <em>syntax highlighting</em> verfügbar (üner 140 Sprachen unterstützte Sprachen, Liste: <code>quarto pandoc --list-highlight-languages</code>)</p>
 <div class="columns">
 <div class="column" style="width:50%;">
 <p><em>VSCode/Python:</em><br>
@@ -842,12 +888,24 @@
 #| echo: true<br>
 print(1+1)<br>
 ```</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a><span class="bu">print</span>(<span class="dv">1</span><span class="op">+</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
 </div><div class="column" style="width:50%;">
 <p><em>Rstudio/R:</em><br>
 </p>
 <p>```{python, eval=F, echo=T}<br>
 print(1+1)<br>
 ```</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="fu">print</span>(<span class="dv">1</span><span class="sc">+</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
 </div>
 </div>
 </section>
@@ -870,7 +928,11 @@ print(1+1)<br>
 </tr>
 <tr class="even">
 <td>echo</td>
-<td>Code Cell anzeigen (TRUE) oder nicht anzeigen (FALSE)</td>
+<td>Code Cell anzeigen (true) oder nicht anzeigen (false)</td>
+</tr>
+<tr class="odd">
+<td>eval</td>
+<td>Ausführung des Codes true/false</td>
 </tr>
 </tbody>
 </table>
@@ -881,142 +943,655 @@ print(1+1)<br>
 </section>
 <section id="examplary-code-cell-i" class="slide level2">
 <h2>Examplary Code Cell I</h2>
-<div style="font-size:28px">
-<div class="cell" data-execution_count="1">
+<div style="font-size:30px">
+<div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb16-2"><a href="#cb16-2"></a>data <span class="op">=</span> pd.read_csv(<span class="st">"files/data/titanic_test.csv"</span>)</span>
-<span id="cb16-3"><a href="#cb16-3"></a>data.describe()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb20-2"><a href="#cb20-2"></a>data <span class="op">=</span> pd.read_csv(<span class="st">"files/data/titanic_test.csv"</span>)</span>
+<span id="cb20-3"><a href="#cb20-3"></a>data.describe()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="1">
-
-<div>
-<style scoped="">
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>PassengerId</th>
-      <th>Pclass</th>
-      <th>Age</th>
-      <th>SibSp</th>
-      <th>Parch</th>
-      <th>Fare</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>count</th>
-      <td>418.000000</td>
-      <td>418.000000</td>
-      <td>332.000000</td>
-      <td>418.000000</td>
-      <td>418.000000</td>
-      <td>417.000000</td>
-    </tr>
-    <tr>
-      <th>mean</th>
-      <td>1100.500000</td>
-      <td>2.265550</td>
-      <td>30.272590</td>
-      <td>0.447368</td>
-      <td>0.392344</td>
-      <td>35.627188</td>
-    </tr>
-    <tr>
-      <th>std</th>
-      <td>120.810458</td>
-      <td>0.841838</td>
-      <td>14.181209</td>
-      <td>0.896760</td>
-      <td>0.981429</td>
-      <td>55.907576</td>
-    </tr>
-    <tr>
-      <th>min</th>
-      <td>892.000000</td>
-      <td>1.000000</td>
-      <td>0.170000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-    </tr>
-    <tr>
-      <th>25%</th>
-      <td>996.250000</td>
-      <td>1.000000</td>
-      <td>21.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>7.895800</td>
-    </tr>
-    <tr>
-      <th>50%</th>
-      <td>1100.500000</td>
-      <td>3.000000</td>
-      <td>27.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>14.454200</td>
-    </tr>
-    <tr>
-      <th>75%</th>
-      <td>1204.750000</td>
-      <td>3.000000</td>
-      <td>39.000000</td>
-      <td>1.000000</td>
-      <td>0.000000</td>
-      <td>31.500000</td>
-    </tr>
-    <tr>
-      <th>max</th>
-      <td>1309.000000</td>
-      <td>3.000000</td>
-      <td>76.000000</td>
-      <td>8.000000</td>
-      <td>9.000000</td>
-      <td>512.329200</td>
-    </tr>
-  </tbody>
+<div class="cell-output cell-output-stdout">
+<pre><code>       PassengerId      Pclass         Age       SibSp       Parch        Fare
+count   418.000000  418.000000  332.000000  418.000000  418.000000  417.000000
+mean   1100.500000    2.265550   30.272590    0.447368    0.392344   35.627188
+std     120.810458    0.841838   14.181209    0.896760    0.981429   55.907576
+min     892.000000    1.000000    0.170000    0.000000    0.000000    0.000000
+25%     996.250000    1.000000   21.000000    0.000000    0.000000    7.895800
+50%    1100.500000    3.000000   27.000000    0.000000    0.000000   14.454200
+75%    1204.750000    3.000000   39.000000    1.000000    0.000000   31.500000
+max    1309.000000    3.000000   76.000000    8.000000    9.000000  512.329200</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="examplary-code-cell-ii" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Examplary Code Cell II</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode python hljs"><span id="cb22-1" class="hljs-ln-code"><a href="#cb22-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"files/data/penguins.csv"</span>)</span>
+<span id="cb22-2" class="hljs-ln-code"><a href="#cb22-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb22-3" class="hljs-ln-code"><a href="#cb22-3"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="code-animations" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Code Animations</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode python hljs"><span id="cb23-1" class="hljs-ln-code"><a href="#cb23-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"files/data/penguins.csv"</span>)</span>
+<span id="cb23-2" class="hljs-ln-code"><a href="#cb23-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb23-3" class="hljs-ln-code"><a href="#cb23-3"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb23-4" class="hljs-ln-code"><a href="#cb23-4"></a>g <span class="op">=</span> sns.FacetGrid(df, hue<span class="op">=</span><span class="st">"species"</span>, height<span class="op">=</span><span class="fl">3.5</span>, aspect<span class="op">=</span><span class="fl">3.5</span><span class="op">/</span><span class="dv">2</span>)</span>
+<span id="cb23-5" class="hljs-ln-code"><a href="#cb23-5"></a>g.<span class="bu">map</span>(plt.scatter, <span class="st">"bill_length_mm"</span>, <span class="st">"bill_depth_mm"</span>).add_legend()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>Aktivierung der Code Animation: hinter Überschrift <code>{auto-animate="true"}</code> schreiben (z.B. <code>## Code Animations {auto-animate="true"}</code>)</li>
+<li><a href="https://quarto.org/docs/presentations/revealjs/advanced.html#code-animations">Referenz - Code Animations</a></li>
+</ul>
+</section>
+<section id="line-highlighting" class="slide level2">
+<h2>Line Highlighting</h2>
+<div style="font-size:30px">
+<ul>
+<li>Markieren bestimmter Zeilen zur Hervorhebung
+<ul>
+<li>In Code Cell Header die Zeile in <code>code-line-numbers</code> definieren (z.B. <code>{.python code-line-numbers="4"}</code>)</li>
+</ul></li>
+<li>Schrittweise zusätzliche Zeilen Markieren
+<ul>
+<li>In Code Cell Header mehrere Zeile in <code>code-line-numbers</code> definieren (z.B. <code>{.python code-line-numbers="4-5|7|10"}</code>)</li>
+</ul></li>
+</ul>
+</div>
+<div class="sourceCode" id="cb24" data-code-line-numbers="4-5|7|10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb24-2"><a href="#cb24-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb24-3"><a href="#cb24-3"></a></span>
+<span id="cb24-4"><a href="#cb24-4"></a>r <span class="op">=</span> np.arange(<span class="dv">0</span>, <span class="dv">2</span>, <span class="fl">0.01</span>)</span>
+<span id="cb24-5"><a href="#cb24-5"></a>theta <span class="op">=</span> <span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> r</span>
+<span id="cb24-6"><a href="#cb24-6"></a>fig, ax <span class="op">=</span> plt.subplots(subplot_kw<span class="op">=</span>{<span class="st">'projection'</span>: <span class="st">'polar'</span>})</span>
+<span id="cb24-7"><a href="#cb24-7"></a>ax.plot(theta, r)</span>
+<span id="cb24-8"><a href="#cb24-8"></a>ax.set_rticks([<span class="fl">0.5</span>, <span class="dv">1</span>, <span class="fl">1.5</span>, <span class="dv">2</span>])</span>
+<span id="cb24-9"><a href="#cb24-9"></a>ax.grid(<span class="va">True</span>)</span>
+<span id="cb24-10"><a href="#cb24-10"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="footer">
+<p><a href="https://quarto.org/docs/presentations/revealjs/#line-highlighting">Referenz - Line Highlighting</a></p>
+</div>
+</section>
+<section id="slide-antimations" class="slide level2 smaller scrollable" data-transition="slide">
+<h2>Slide Antimations</h2>
+<ul>
+<li>Hinter Überschrift <code>{.smaller .scrollable transition="slide"}</code></li>
+</ul>
+</section>
+<section id="tabsets" class="slide level2">
+<h2>Tabsets</h2>
+<div class="panel-tabset">
+<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">Plot</a></li><li><a href="#tabset-1-2">Data</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1">
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb25-2"><a href="#cb25-2"></a><span class="fu">ggplot</span>(mtcars, <span class="fu">aes</span>(hp, mpg, <span class="at">color =</span> am)) <span class="sc">+</span></span>
+<span id="cb25-3"><a href="#cb25-3"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb25-4"><a href="#cb25-4"></a>  <span class="fu">geom_smooth</span>(<span class="at">formula =</span> y <span class="sc">~</span> x, <span class="at">method =</span> <span class="st">"loess"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<p><img data-src="python_quarto_introduction_files/figure-revealjs/unnamed-chunk-6-1.png" width="960"></p>
+</div>
+</div>
+</div>
+<div id="tabset-1-2">
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<table style="width:100%;">
+<colgroup>
+<col style="width: 27%">
+<col style="width: 6%">
+<col style="width: 5%">
+<col style="width: 8%">
+<col style="width: 5%">
+<col style="width: 6%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 4%">
+<col style="width: 4%">
+<col style="width: 6%">
+<col style="width: 6%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: right;">mpg</th>
+<th style="text-align: right;">cyl</th>
+<th style="text-align: right;">disp</th>
+<th style="text-align: right;">hp</th>
+<th style="text-align: right;">drat</th>
+<th style="text-align: right;">wt</th>
+<th style="text-align: right;">qsec</th>
+<th style="text-align: right;">vs</th>
+<th style="text-align: right;">am</th>
+<th style="text-align: right;">gear</th>
+<th style="text-align: right;">carb</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Mazda RX4</td>
+<td style="text-align: right;">21.0</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">160.0</td>
+<td style="text-align: right;">110</td>
+<td style="text-align: right;">3.90</td>
+<td style="text-align: right;">2.620</td>
+<td style="text-align: right;">16.46</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Mazda RX4 Wag</td>
+<td style="text-align: right;">21.0</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">160.0</td>
+<td style="text-align: right;">110</td>
+<td style="text-align: right;">3.90</td>
+<td style="text-align: right;">2.875</td>
+<td style="text-align: right;">17.02</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Datsun 710</td>
+<td style="text-align: right;">22.8</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">108.0</td>
+<td style="text-align: right;">93</td>
+<td style="text-align: right;">3.85</td>
+<td style="text-align: right;">2.320</td>
+<td style="text-align: right;">18.61</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Hornet 4 Drive</td>
+<td style="text-align: right;">21.4</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">258.0</td>
+<td style="text-align: right;">110</td>
+<td style="text-align: right;">3.08</td>
+<td style="text-align: right;">3.215</td>
+<td style="text-align: right;">19.44</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Hornet Sportabout</td>
+<td style="text-align: right;">18.7</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">360.0</td>
+<td style="text-align: right;">175</td>
+<td style="text-align: right;">3.15</td>
+<td style="text-align: right;">3.440</td>
+<td style="text-align: right;">17.02</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Valiant</td>
+<td style="text-align: right;">18.1</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">225.0</td>
+<td style="text-align: right;">105</td>
+<td style="text-align: right;">2.76</td>
+<td style="text-align: right;">3.460</td>
+<td style="text-align: right;">20.22</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Duster 360</td>
+<td style="text-align: right;">14.3</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">360.0</td>
+<td style="text-align: right;">245</td>
+<td style="text-align: right;">3.21</td>
+<td style="text-align: right;">3.570</td>
+<td style="text-align: right;">15.84</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Merc 240D</td>
+<td style="text-align: right;">24.4</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">146.7</td>
+<td style="text-align: right;">62</td>
+<td style="text-align: right;">3.69</td>
+<td style="text-align: right;">3.190</td>
+<td style="text-align: right;">20.00</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Merc 230</td>
+<td style="text-align: right;">22.8</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">140.8</td>
+<td style="text-align: right;">95</td>
+<td style="text-align: right;">3.92</td>
+<td style="text-align: right;">3.150</td>
+<td style="text-align: right;">22.90</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Merc 280</td>
+<td style="text-align: right;">19.2</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">167.6</td>
+<td style="text-align: right;">123</td>
+<td style="text-align: right;">3.92</td>
+<td style="text-align: right;">3.440</td>
+<td style="text-align: right;">18.30</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Merc 280C</td>
+<td style="text-align: right;">17.8</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">167.6</td>
+<td style="text-align: right;">123</td>
+<td style="text-align: right;">3.92</td>
+<td style="text-align: right;">3.440</td>
+<td style="text-align: right;">18.90</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Merc 450SE</td>
+<td style="text-align: right;">16.4</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">275.8</td>
+<td style="text-align: right;">180</td>
+<td style="text-align: right;">3.07</td>
+<td style="text-align: right;">4.070</td>
+<td style="text-align: right;">17.40</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Merc 450SL</td>
+<td style="text-align: right;">17.3</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">275.8</td>
+<td style="text-align: right;">180</td>
+<td style="text-align: right;">3.07</td>
+<td style="text-align: right;">3.730</td>
+<td style="text-align: right;">17.60</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Merc 450SLC</td>
+<td style="text-align: right;">15.2</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">275.8</td>
+<td style="text-align: right;">180</td>
+<td style="text-align: right;">3.07</td>
+<td style="text-align: right;">3.780</td>
+<td style="text-align: right;">18.00</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Cadillac Fleetwood</td>
+<td style="text-align: right;">10.4</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">472.0</td>
+<td style="text-align: right;">205</td>
+<td style="text-align: right;">2.93</td>
+<td style="text-align: right;">5.250</td>
+<td style="text-align: right;">17.98</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Lincoln Continental</td>
+<td style="text-align: right;">10.4</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">460.0</td>
+<td style="text-align: right;">215</td>
+<td style="text-align: right;">3.00</td>
+<td style="text-align: right;">5.424</td>
+<td style="text-align: right;">17.82</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Chrysler Imperial</td>
+<td style="text-align: right;">14.7</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">440.0</td>
+<td style="text-align: right;">230</td>
+<td style="text-align: right;">3.23</td>
+<td style="text-align: right;">5.345</td>
+<td style="text-align: right;">17.42</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Fiat 128</td>
+<td style="text-align: right;">32.4</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">78.7</td>
+<td style="text-align: right;">66</td>
+<td style="text-align: right;">4.08</td>
+<td style="text-align: right;">2.200</td>
+<td style="text-align: right;">19.47</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Honda Civic</td>
+<td style="text-align: right;">30.4</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">75.7</td>
+<td style="text-align: right;">52</td>
+<td style="text-align: right;">4.93</td>
+<td style="text-align: right;">1.615</td>
+<td style="text-align: right;">18.52</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Toyota Corolla</td>
+<td style="text-align: right;">33.9</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">71.1</td>
+<td style="text-align: right;">65</td>
+<td style="text-align: right;">4.22</td>
+<td style="text-align: right;">1.835</td>
+<td style="text-align: right;">19.90</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Toyota Corona</td>
+<td style="text-align: right;">21.5</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">120.1</td>
+<td style="text-align: right;">97</td>
+<td style="text-align: right;">3.70</td>
+<td style="text-align: right;">2.465</td>
+<td style="text-align: right;">20.01</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Dodge Challenger</td>
+<td style="text-align: right;">15.5</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">318.0</td>
+<td style="text-align: right;">150</td>
+<td style="text-align: right;">2.76</td>
+<td style="text-align: right;">3.520</td>
+<td style="text-align: right;">16.87</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">AMC Javelin</td>
+<td style="text-align: right;">15.2</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">304.0</td>
+<td style="text-align: right;">150</td>
+<td style="text-align: right;">3.15</td>
+<td style="text-align: right;">3.435</td>
+<td style="text-align: right;">17.30</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Camaro Z28</td>
+<td style="text-align: right;">13.3</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">350.0</td>
+<td style="text-align: right;">245</td>
+<td style="text-align: right;">3.73</td>
+<td style="text-align: right;">3.840</td>
+<td style="text-align: right;">15.41</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Pontiac Firebird</td>
+<td style="text-align: right;">19.2</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">400.0</td>
+<td style="text-align: right;">175</td>
+<td style="text-align: right;">3.08</td>
+<td style="text-align: right;">3.845</td>
+<td style="text-align: right;">17.05</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Fiat X1-9</td>
+<td style="text-align: right;">27.3</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">79.0</td>
+<td style="text-align: right;">66</td>
+<td style="text-align: right;">4.08</td>
+<td style="text-align: right;">1.935</td>
+<td style="text-align: right;">18.90</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Porsche 914-2</td>
+<td style="text-align: right;">26.0</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">120.3</td>
+<td style="text-align: right;">91</td>
+<td style="text-align: right;">4.43</td>
+<td style="text-align: right;">2.140</td>
+<td style="text-align: right;">16.70</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Lotus Europa</td>
+<td style="text-align: right;">30.4</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">95.1</td>
+<td style="text-align: right;">113</td>
+<td style="text-align: right;">3.77</td>
+<td style="text-align: right;">1.513</td>
+<td style="text-align: right;">16.90</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Ford Pantera L</td>
+<td style="text-align: right;">15.8</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">351.0</td>
+<td style="text-align: right;">264</td>
+<td style="text-align: right;">4.22</td>
+<td style="text-align: right;">3.170</td>
+<td style="text-align: right;">14.50</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Ferrari Dino</td>
+<td style="text-align: right;">19.7</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">145.0</td>
+<td style="text-align: right;">175</td>
+<td style="text-align: right;">3.62</td>
+<td style="text-align: right;">2.770</td>
+<td style="text-align: right;">15.50</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Maserati Bora</td>
+<td style="text-align: right;">15.0</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">301.0</td>
+<td style="text-align: right;">335</td>
+<td style="text-align: right;">3.54</td>
+<td style="text-align: right;">3.570</td>
+<td style="text-align: right;">14.60</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">8</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Volvo 142E</td>
+<td style="text-align: right;">21.4</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">121.0</td>
+<td style="text-align: right;">109</td>
+<td style="text-align: right;">4.11</td>
+<td style="text-align: right;">2.780</td>
+<td style="text-align: right;">18.60</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">2</td>
+</tr>
+</tbody>
 </table>
 </div>
 </div>
 </div>
 </div>
+</div>
+<div class="footer">
+<p>Learn more: <a href="https://quarto.org/docs/presentations/revealjs/#tabsets">Tabsets</a></p>
+</div>
 </section>
-<section id="examplary-code-cell-ii" class="slide level2">
-<h2>Examplary Code Cell II</h2>
-<div style="font-size:28px">
-<div class="cell" data-execution_count="2">
+<section id="interactive-slides" class="slide level2">
+<h2>Interactive Slides</h2>
+<ul>
+<li>Jupyter-Widgets und HTML-Widgets in Präsentationen einfügen</li>
+</ul>
+<div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"files/data/penguins.csv"</span>)</span>
-<span id="cb17-2"><a href="#cb17-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb17-3"><a href="#cb17-3"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
-<span id="cb17-4"><a href="#cb17-4"></a>g <span class="op">=</span> sns.FacetGrid(df, hue<span class="op">=</span><span class="st">"species"</span>, height<span class="op">=</span><span class="fl">3.5</span>, aspect<span class="op">=</span><span class="fl">3.5</span><span class="op">/</span><span class="dv">2</span>)</span>
-<span id="cb17-5"><a href="#cb17-5"></a>g.<span class="bu">map</span>(plt.scatter, <span class="st">"bill_length_mm"</span>, <span class="st">"bill_depth_mm"</span>).add_legend()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(<span class="st">"leaflet"</span>)) <span class="fu">install.packages</span>(<span class="st">"leaflet"</span>)</span>
+<span id="cb27-2"><a href="#cb27-2"></a><span class="fu">library</span>(leaflet)</span>
+<span id="cb27-3"><a href="#cb27-3"></a><span class="fu">leaflet</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb27-4"><a href="#cb27-4"></a>  <span class="fu">addTiles</span>() <span class="sc">%&gt;%</span>  <span class="co"># Add default OpenStreetMap map tiles</span></span>
+<span id="cb27-5"><a href="#cb27-5"></a>  <span class="fu">addMarkers</span>(<span class="at">lng=</span><span class="fl">174.768</span>, <span class="at">lat=</span><span class="sc">-</span><span class="fl">36.852</span>, <span class="at">popup=</span><span class="st">"The birthplace of R"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="2">
-<pre><code>&lt;seaborn.axisgrid.FacetGrid at 0x24d665ac810&gt;</code></pre>
-<p>Bill Sizes by Species</p>
-</div>
-<div class="cell-output cell-output-display">
-<p><img data-src="python_quarto_introduction_files/figure-revealjs/cell-3-output-2.png" width="687" height="326"></p>
+<div class="cell-output-display">
+<div class="leaflet html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-673bedf09397c85577d7" style="width:960px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-673bedf09397c85577d7">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]},{"method":"addMarkers","args":[-36.852,174.768,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},"The birthplace of R",null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[-36.852,-36.852],"lng":[174.768,174.768]}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
+<div class="footer">
+<p>Learn more: <a href="https://quarto.org/docs/interactive/widgets/jupyter.html">Jupyter widgets</a>, <a href="https://quarto.org/docs/interactive/widgets/htmlwidgets.html">htmlwidgets</a></p>
+</div>
+</section>
+<section id="chalkboard" class="slide level2" data-chalkboard-buttons="true">
+<h2>Chalkboard</h2>
+<p>You can also press <code>b</code> to toggle the chalkboard or <code>c</code> to toggle the notes canvas.</p>
+<div class="footer">
+<p>Learn more: <a href="https://quarto.org/docs/presentations/revealjs/presenting.html#chalkboard">Chalkboard</a></p>
+</div>
+</section>
+<section id="point-of-view" class="slide level2">
+<h2>Point of View</h2>
+<p>Press <code>o</code> to toggle overview mode:</p>
+<p>Hold down the <code>Alt</code> key (or <code>Ctrl</code> in Linux) and click on any element to zoom towards it—try it now on this slide.</p>
+<div class="footer">
+<p>Learn more: <a href="https://quarto.org/docs/presentations/revealjs/presenting.html#overview-mode">Overview Mode</a>, <a href="https://quarto.org/docs/presentations/revealjs/presenting.html#slide-zoom">Slide Zoom</a></p>
+</div>
+</section>
+<section id="speaker-view" class="slide level2">
+<h2>Speaker View</h2>
+<p>Press <code>s</code> (or use the presentation menu) to open speaker view</p>
+<div class="footer">
+<p>Learn more: <a href="https://quarto.org/docs/presentations/revealjs/presenting.html#speaker-view">Speaker View</a></p>
+</div>
+</section>
+<section id="easy-navigation" class="slide level2">
+<h2>Easy Navigation</h2>
+<ul>
+<li><p>Quickly jump to other parts of your presentation</p></li>
+<li><p>Toggle the slide menu with the menu button (bottom left of slide) to go to other slides and access presentation tools.</p></li>
+<li><p>You can also press <code>m</code> to toggle the menu open and closed.</p></li>
+</ul>
+<div class="footer">
+<p>Learn more: <a href="https://quarto.org/docs/presentations/revealjs/presenting.html#navigation-menu">Navigation</a></p>
 </div>
 </section>
 <section id="literatur" class="slide level2 smaller scrollable">
@@ -1255,6 +1830,48 @@ Yihui Xie, Garrett Grolemund, J. J. Allaire. 2018. <em>R Markdown: The Definitiv
         ]
       });
     </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        function fireSlideChanged(previousSlide, currentSlide) {
+
+          // dispatch for htmlwidgets
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for reveal
+        if (window.Reveal) {
+          window.Reveal.addEventListener("slidechanged", function(event) {
+            fireSlideChanged(event.previousSlide, event.currentSlide);
+          });
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {

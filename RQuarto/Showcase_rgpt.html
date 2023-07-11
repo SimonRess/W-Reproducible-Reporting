@@ -409,38 +409,150 @@
 </section>
 <section id="examplary-code-cell-i" class="slide level2">
 <h2>Examplary Code Cell I</h2>
-<div style="font-size:28px">
+<div style="font-size:22px">
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>data <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">"files/data/titanic_test.csv"</span>)</span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="fu">summary</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(knitr)</span>
+<span id="cb1-2"><a href="#cb1-2"></a>data <span class="ot">=</span> <span class="fu">read.csv</span>(<span class="st">"files/data/titanic_test.csv"</span>)</span>
+<span id="cb1-3"><a href="#cb1-3"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">summary</span>(data))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stdout">
-<pre><code>  PassengerId         Pclass          Name               Sex           
- Min.   : 892.0   Min.   :1.000   Length:418         Length:418        
- 1st Qu.: 996.2   1st Qu.:1.000   Class :character   Class :character  
- Median :1100.5   Median :3.000   Mode  :character   Mode  :character  
- Mean   :1100.5   Mean   :2.266                                        
- 3rd Qu.:1204.8   3rd Qu.:3.000                                        
- Max.   :1309.0   Max.   :3.000                                        
-                                                                       
-      Age            SibSp            Parch           Ticket         
- Min.   : 0.17   Min.   :0.0000   Min.   :0.0000   Length:418        
- 1st Qu.:21.00   1st Qu.:0.0000   1st Qu.:0.0000   Class :character  
- Median :27.00   Median :0.0000   Median :0.0000   Mode  :character  
- Mean   :30.27   Mean   :0.4474   Mean   :0.3923                     
- 3rd Qu.:39.00   3rd Qu.:1.0000   3rd Qu.:0.0000                     
- Max.   :76.00   Max.   :8.0000   Max.   :9.0000                     
- NA's   :86                                                          
-      Fare            Cabin             Embarked        
- Min.   :  0.000   Length:418         Length:418        
- 1st Qu.:  7.896   Class :character   Class :character  
- Median : 14.454   Mode  :character   Mode  :character  
- Mean   : 35.627                                        
- 3rd Qu.: 31.500                                        
- Max.   :512.329                                        
- NA's   :1                                              </code></pre>
+<div class="cell-output-display">
+<div id="tbl-titanic-summary">
+<table>
+<caption>Table&nbsp;1: Summary of the titanic data</caption>
+<colgroup>
+<col style="width: 1%">
+<col style="width: 8%">
+<col style="width: 7%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 7%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: left;">PassengerId</th>
+<th style="text-align: left;">Pclass</th>
+<th style="text-align: left;">Name</th>
+<th style="text-align: left;">Sex</th>
+<th style="text-align: left;">Age</th>
+<th style="text-align: left;">SibSp</th>
+<th style="text-align: left;">Parch</th>
+<th style="text-align: left;">Ticket</th>
+<th style="text-align: left;">Fare</th>
+<th style="text-align: left;">Cabin</th>
+<th style="text-align: left;">Embarked</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Min. : 892.0</td>
+<td style="text-align: left;">Min. :1.000</td>
+<td style="text-align: left;">Length:418</td>
+<td style="text-align: left;">Length:418</td>
+<td style="text-align: left;">Min. : 0.17</td>
+<td style="text-align: left;">Min. :0.0000</td>
+<td style="text-align: left;">Min. :0.0000</td>
+<td style="text-align: left;">Length:418</td>
+<td style="text-align: left;">Min. : 0.000</td>
+<td style="text-align: left;">Length:418</td>
+<td style="text-align: left;">Length:418</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">1st Qu.: 996.2</td>
+<td style="text-align: left;">1st Qu.:1.000</td>
+<td style="text-align: left;">Class :character</td>
+<td style="text-align: left;">Class :character</td>
+<td style="text-align: left;">1st Qu.:21.00</td>
+<td style="text-align: left;">1st Qu.:0.0000</td>
+<td style="text-align: left;">1st Qu.:0.0000</td>
+<td style="text-align: left;">Class :character</td>
+<td style="text-align: left;">1st Qu.: 7.896</td>
+<td style="text-align: left;">Class :character</td>
+<td style="text-align: left;">Class :character</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Median :1100.5</td>
+<td style="text-align: left;">Median :3.000</td>
+<td style="text-align: left;">Mode :character</td>
+<td style="text-align: left;">Mode :character</td>
+<td style="text-align: left;">Median :27.00</td>
+<td style="text-align: left;">Median :0.0000</td>
+<td style="text-align: left;">Median :0.0000</td>
+<td style="text-align: left;">Mode :character</td>
+<td style="text-align: left;">Median : 14.454</td>
+<td style="text-align: left;">Mode :character</td>
+<td style="text-align: left;">Mode :character</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Mean :1100.5</td>
+<td style="text-align: left;">Mean :2.266</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">Mean :30.27</td>
+<td style="text-align: left;">Mean :0.4474</td>
+<td style="text-align: left;">Mean :0.3923</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">Mean : 35.627</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">3rd Qu.:1204.8</td>
+<td style="text-align: left;">3rd Qu.:3.000</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">3rd Qu.:39.00</td>
+<td style="text-align: left;">3rd Qu.:1.0000</td>
+<td style="text-align: left;">3rd Qu.:0.0000</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">3rd Qu.: 31.500</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Max. :1309.0</td>
+<td style="text-align: left;">Max. :3.000</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">Max. :76.00</td>
+<td style="text-align: left;">Max. :8.0000</td>
+<td style="text-align: left;">Max. :9.0000</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">Max. :512.329</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA’s :86</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA’s :1</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: left;">NA</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 </div>
 </div>
@@ -448,8 +560,55 @@
 <section id="examplary-code-cell-i-1" class="slide level2">
 <h2>Examplary Code Cell I</h2>
 <p>::: [<a href="https://allisonhorst.github.io/palmerpenguins/index.html">Reference - palmerpenguins</a>]</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(<span class="st">"palmerpenguins"</span>)) <span class="fu">install.packages</span>(<span class="st">"palmerpenguins"</span>)</span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="fu">library</span>(palmerpenguins)</span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(<span class="st">"ggplot2"</span>)) <span class="fu">install.packages</span>(<span class="st">"ggplot2"</span>)</span>
+<span id="cb2-4"><a href="#cb2-4"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb2-5"><a href="#cb2-5"></a></span>
+<span id="cb2-6"><a href="#cb2-6"></a><span class="fu">ggplot</span>(<span class="at">data =</span> penguins, </span>
+<span id="cb2-7"><a href="#cb2-7"></a>       <span class="fu">aes</span>(<span class="at">x =</span> flipper_length_mm,</span>
+<span id="cb2-8"><a href="#cb2-8"></a>           <span class="at">y =</span> body_mass_g)) <span class="sc">+</span></span>
+<span id="cb2-9"><a href="#cb2-9"></a><span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> species, </span>
+<span id="cb2-10"><a href="#cb2-10"></a>               <span class="at">shape =</span> species),</span>
+<span id="cb2-11"><a href="#cb2-11"></a>           <span class="at">size =</span> <span class="dv">3</span>,</span>
+<span id="cb2-12"><a href="#cb2-12"></a>           <span class="at">alpha =</span> <span class="fl">0.8</span>) <span class="sc">+</span></span>
+<span id="cb2-13"><a href="#cb2-13"></a><span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"darkorange"</span>,<span class="st">"purple"</span>,<span class="st">"cyan4"</span>)) <span class="sc">+</span></span>
+<span id="cb2-14"><a href="#cb2-14"></a><span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Penguin size, Palmer Station LTER"</span>,</span>
+<span id="cb2-15"><a href="#cb2-15"></a>     <span class="at">subtitle =</span> <span class="st">"Flipper length and body mass for Adelie, Chinstrap and Gentoo Penguins"</span>,</span>
+<span id="cb2-16"><a href="#cb2-16"></a>     <span class="at">x =</span> <span class="st">"Flipper length (mm)"</span>,</span>
+<span id="cb2-17"><a href="#cb2-17"></a>     <span class="at">y =</span> <span class="st">"Body mass (g)"</span>,</span>
+<span id="cb2-18"><a href="#cb2-18"></a>     <span class="at">color =</span> <span class="st">"Penguin species"</span>,</span>
+<span id="cb2-19"><a href="#cb2-19"></a>     <span class="at">shape =</span> <span class="st">"Penguin species"</span>) <span class="sc">+</span></span>
+<span id="cb2-20"><a href="#cb2-20"></a><span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="fu">c</span>(<span class="fl">0.2</span>, <span class="fl">0.7</span>),</span>
+<span id="cb2-21"><a href="#cb2-21"></a>      <span class="at">plot.title.position =</span> <span class="st">"plot"</span>,</span>
+<span id="cb2-22"><a href="#cb2-22"></a>      <span class="at">plot.caption =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="dv">0</span>, <span class="at">face=</span> <span class="st">"italic"</span>),</span>
+<span id="cb2-23"><a href="#cb2-23"></a>      <span class="at">plot.caption.position =</span> <span class="st">"plot"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 
-<img data-src="Showcase_rgpt_files/figure-revealjs/unnamed-chunk-2-1.png" width="960" class="r-stretch"></section></section>
+</div>
+<img data-src="Showcase_rgpt_files/figure-revealjs/fig-size-flipper-length-species-1.png" width="960" class="r-stretch quarto-figure-center"><p class="caption">Figure&nbsp;1: A scatterplot of penguins’ size and flipper length, colored by species of penguins</p></section>
+<section id="referencing" class="slide level2">
+<h2>Referencing</h2>
+<div style="font-size:28px">
+<p><strong>Grafiken</strong></p>
+<ul>
+<li>Das <code>#| label:</code> der Grafik muss mit dem Sufix <em>fig-</em> beginnen</li>
+<li>Es muss eine <code>#| fig-cap:</code> enthalten sein</li>
+<li>Verweis auf die Grafik mit <code>@</code> + dem gewählten <code>#| label:</code></li>
+<li>Beispiel: Hier ein Verweis auf den Plot <a href="#/fig-size-flipper-length-species">Figure&nbsp;1</a></li>
+</ul>
+<p><strong>Tabellen</strong></p>
+<ul>
+<li>Das <code>#| label:</code> der Grafik muss mit dem Sufix <em>tbl-</em> beginnen</li>
+<li>Es muss eine <code>#| tbl-cap:</code> enthalten sein</li>
+<li>Verweis auf die Grafik mit <code>@</code> + dem gewählten <code>#| label:</code></li>
+<li>Beispiel: Hier ein Verweis auf den Plot <a href="#/tbl-titanic-summary">Table&nbsp;1</a></li>
+</ul>
+</div>
+</section></section>
 <section>
 <section id="rgpt" class="title-slide slide level1 center">
 <h1>{rgpt}</h1>
