@@ -9,7 +9,35 @@ Install missing packages:
 "LaTeX Error: File `ucharcat.sty' not found"
 tinytex::parse_packages(text="LaTeX Error: File `ucharcat.sty' not found")
 
+# Format
+- [Quarto - All Formats](https://quarto.org/docs/output-formats/all-formats.html)
 
+## Presentations
+
+### Revealjs
+- [Quarto - Revealjs](https://quarto.org/docs/presentations/revealjs/)
+
+## Documents
+
+### HTML 
+- [Quarto - HTML Basics](https://quarto.org/docs/output-formats/html-basics.html)
+
+### PDF
+- [PDF Basics](https://quarto.org/docs/output-formats/pdf-basics.html)
+
+
+# Computations
+- [Quarto - Using R](https://quarto.org/docs/computations/r.html)
+- [Quarto - Execution Options](https://quarto.org/docs/computations/execution-options.html)
+- [Quarto - R Inline Code](https://quarto.org/docs/computations/inline-code.html#knitr-2)
+
+# Interactivity
+- [Quarto - Interactivity](https://quarto.org/docs/interactive/)
+
+# Theming
+
+## HTML Theming
+- [Quarto - HTML Theming](https://quarto.org/docs/output-formats/html-themes.html) (incl. `fontsize`)
 
 ## "Draft" watermark on pages/slides
 
